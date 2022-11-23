@@ -1,0 +1,17 @@
+import inet.http
+import web.rest.jsonLiteClient;
+import sys.wallpaper;
+var httpjson = web.rest.jsonLiteClient();
+var ret = httpjson.get("https://bing.biturl.top/?resolution=1920&format=json&index=0&mkt=zh-CN");
+
+t = string.split(ret.url,'.'); //使用单个分隔字符拆分字符串
+table.reverse(t); // 反序 倒转
+var filename = string.concat( t[2],'.', t[1]) ; 
+http=inet.http();
+image2 = http.get(ret.url) 
+string.save("\pic\" ++ filename,image2)
+sys.wallpaper.setCurrent("\pic\" ++ filename);
+io.open()
+io.print("ok")
+sleep(500)
+io.close()
